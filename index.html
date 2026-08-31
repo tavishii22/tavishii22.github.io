@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tavishi Kashyap — AI/ML Engineering Portfolio</title>
+<meta name="description" content="AI/ML engineering portfolio — agentic AI, LLM orchestration, and GPU-optimized ML systems. Final-year Computer Engineering student at TIET, seeking AI/ML and Software Engineering internships.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tavishi Kashyap — AI/ML Engineering Portfolio">
+<meta property="og:description" content="Agentic AI, LLM orchestration, and GPU-optimized ML systems — projects, experience, and background.">
+<meta property="og:url" content="https://tavishii22.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tavishi Kashyap — AI/ML Engineering Portfolio">
+<meta name="twitter:description" content="Agentic AI, LLM orchestration, and GPU-optimized ML systems — projects, experience, and background.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F9FD;
+    --bg-raised:#FFFFFF;
+    --ink:#0F1730;
+    --ink-soft:#57607A;
+    --line:#DCE3F0;
+
+    --navy:#0A1330;
+    --navy-deep:#060B1D;
+    --blue:#2452C7;
+    --blue-deep:#12275E;
+    --blue-pale:#E4EBFC;
+
+    --gold:#C9972F;
+    --gold-bright:#E8B84B;
+    --gold-soft:#F6E9C9;
+
+    --pink:#E58FAE;
+    --silver:#AEB9CF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold-soft); color:var(--ink);}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3{font-family:'Bricolage Grotesque', sans-serif; font-weight:700; letter-spacing:-0.02em; color:var(--ink);}
+  a{color:var(--blue-deep); text-decoration:none;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  img{max-width:100%; display:block;}
+
+  /* reveal-on-scroll: always visible by default (CSS never hides content).
+     JS below may add a one-time entrance animation as a progressive enhancement. */
+  .reveal{opacity:1; transform:none;}
+  @keyframes revealIn{
+    from{opacity:0; transform:translateY(18px);}
+    to{opacity:1; transform:none;}
+  }
+  .reveal.animate-in{animation:revealIn .7s ease both;}
+
+  /* hero content: gentle slide-up only, never starts from invisible */
+  .hero-anim{animation:heroIn .7s ease both;}
+  .hero-grid > div:first-child{animation:heroIn .7s ease both;}
+  @keyframes heroIn{
+    from{transform:translateY(14px);}
+    to{transform:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-anim, .hero-grid > div:first-child{animation:none;}
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(247,249,253,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 32px;}
+  .nav-name{font-family:'Bricolage Grotesque', sans-serif; font-weight:700; font-size:1.2rem; color:var(--ink);}
+  .nav-links{display:flex; gap:30px; font-size:0.9rem;}
+  .nav-links a{
+    color:var(--ink-soft); position:relative; padding-bottom:3px; font-weight:500;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:1.5px;
+    background:linear-gradient(90deg, var(--gold), var(--blue));
+    transition:width .25s ease;
+  }
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a:hover::after{width:100%;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(ellipse 120% 90% at 15% -10%, #16255E 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    color:#EFF3FF;
+    overflow:hidden;
+    padding:120px 0 100px;
+  }
+  .aurora{position:absolute; inset:0; z-index:0; pointer-events:none;}
+  .aurora span{position:absolute; border-radius:50%; filter:blur(90px); opacity:0.5; animation:drift 20s ease-in-out infinite;}
+  .aurora span:nth-child(1){width:600px; height:600px; background:radial-gradient(circle, var(--blue) 0%, transparent 70%); top:-220px; left:-120px; animation-duration:22s;}
+  .aurora span:nth-child(2){width:460px; height:460px; background:radial-gradient(circle, var(--gold-bright) 0%, transparent 70%); top:-40px; right:-100px; opacity:0.24; animation-duration:26s; animation-delay:-4s;}
+  .aurora span:nth-child(3){width:420px; height:420px; background:radial-gradient(circle, var(--pink) 0%, transparent 70%); bottom:-200px; left:30%; opacity:0.18; animation-duration:24s; animation-delay:-9s;}
+  @keyframes drift{
+    0%,100%{transform:translate(0,0) scale(1);}
+    33%{transform:translate(50px,-35px) scale(1.1);}
+    66%{transform:translate(-35px,25px) scale(0.94);}
+  }
+  @media (prefers-reduced-motion: reduce){ .aurora span{animation:none;} }
+
+  .grid-texture{
+    position:absolute; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(ellipse 80% 70% at 60% 30%, black 0%, transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse 80% 70% at 60% 30%, black 0%, transparent 75%);
+  }
+
+  .hero .wrap{position:relative; z-index:2;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.82rem; letter-spacing:0.02em;
+    color:var(--gold-bright); margin-bottom:22px; font-weight:600;
+  }
+  .eyebrow::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold-bright); box-shadow:0 0 10px var(--gold-bright);}
+  .hero h1{
+    font-size:3.9rem; line-height:1.02; max-width:12ch; margin-bottom:24px; color:#fff;
+    font-weight:700;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--gold-bright);
+    background:linear-gradient(100deg, var(--gold-bright) 10%, var(--pink) 55%, var(--gold-bright) 90%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    background-size:200% auto;
+    animation:shimmer 6s linear infinite;
+  }
+  @keyframes shimmer{ to{ background-position:200% center; } }
+  @media (prefers-reduced-motion: reduce){ .hero h1 em{animation:none;} }
+  .hero-role{font-size:1.15rem; color:#C7D1EE; max-width:42ch; margin-bottom:30px;}
+  .hero-lede{max-width:50ch; font-size:1rem; color:#AEBBDD; margin-bottom:34px;}
+  .contact-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .contact-row a{
+    font-size:0.88rem; color:#DDE4F8; border:1px solid rgba(255,255,255,0.18);
+    padding:9px 16px; border-radius:100px; transition:border-color .2s ease, background .2s ease;
+  }
+  .contact-row a:hover{border-color:var(--gold-bright); background:rgba(232,184,75,0.08);}
+
+  /* readout panel */
+  .readout{
+    background:rgba(255,255,255,0.045);
+    border:1px solid rgba(255,255,255,0.14);
+    backdrop-filter:blur(14px);
+    border-radius:4px;
+    padding:28px 26px 12px;
+  }
+  .readout-title{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--silver); margin-bottom:18px;}
+  .stat-row{
+    display:flex; align-items:baseline; gap:16px; padding:16px 0;
+    border-top:1px solid rgba(255,255,255,0.1);
+  }
+  .stat-row:first-of-type{border-top:none;}
+  .stat-num{
+    font-family:'IBM Plex Mono', monospace; font-size:1.7rem; font-weight:500;
+    color:#fff; min-width:80px;
+  }
+  .stat-row.flag .stat-num{
+    color:var(--gold-bright);
+    text-shadow:0 0 18px rgba(232,184,75,0.45);
+  }
+  .stat-label{font-size:0.86rem; color:#B7C2E4; line-height:1.45;}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:80px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:40px;}
+  .sec-num{font-family:'IBM Plex Mono', monospace; color:var(--blue); font-size:0.85rem;}
+  .sec-head h2{font-size:2rem;}
+
+  #about .about-body{max-width:66ch; font-size:1.06rem;}
+  #about .about-body p{margin-bottom:18px;}
+  #about .about-body strong{
+    background:linear-gradient(180deg, transparent 62%, var(--gold-soft) 62%);
+    font-weight:700; color:var(--ink);
+  }
+
+  .ledger{border-top:1px solid var(--line);}
+  .ledger-row{display:grid; grid-template-columns:230px 1fr; gap:24px; padding:18px 0; border-bottom:1px solid var(--line);}
+  .ledger-cat{font-weight:700; color:var(--ink); font-size:0.95rem;}
+  .ledger-items{color:var(--ink-soft); font-size:0.94rem;}
+
+  /* projects */
+  .project{
+    padding:30px; margin-bottom:22px;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .project:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px -20px rgba(36,82,199,0.25);
+    border-color:var(--gold);
+  }
+  .project::before{
+    content:""; position:absolute; left:0; top:14px; bottom:14px; width:3px;
+    background:linear-gradient(180deg, var(--gold), var(--blue));
+    border-radius:3px; opacity:0.85;
+  }
+  .project-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px 24px; margin-bottom:6px;}
+  .project h3{font-size:1.4rem;}
+  .project-team{
+    display:inline-block; font-size:0.76rem; color:var(--blue-deep);
+    background:var(--blue-pale); padding:3px 10px; border-radius:100px; margin-bottom:12px;
+  }
+  .project-tools{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); margin-bottom:14px;}
+  .project ul{list-style:none; max-width:74ch;}
+  .project li{position:relative; padding-left:20px; margin-bottom:10px; font-size:0.97rem;}
+  .project li::before{content:"—"; position:absolute; left:0; color:var(--gold);}
+  .project-chips{display:flex; flex-wrap:wrap; gap:8px 10px; margin-top:12px;}
+  .chip{
+    font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--blue-deep);
+    background:var(--blue-pale); padding:4px 10px; border-radius:100px;
+  }
+
+  /* experience timeline */
+  .tl{border-top:1px solid var(--line);}
+  .tl-row{display:grid; grid-template-columns:150px 1fr; gap:24px; padding:24px 0; border-bottom:1px solid var(--line);}
+  .tl-date{font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:var(--ink-soft); padding-top:3px;}
+  .tl-role{font-weight:700; font-size:1.08rem; margin-bottom:3px;}
+  .tl-org{font-size:0.92rem; color:var(--ink-soft); font-style:italic; margin-bottom:10px;}
+  .tl-row ul{list-style:none; max-width:66ch;}
+  .tl-row li{position:relative; padding-left:20px; margin-bottom:8px; font-size:0.95rem;}
+  .tl-row li::before{content:"—"; position:absolute; left:0; color:var(--gold);}
+
+  /* alma mater */
+  .alma-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  .alma-card{
+    display:flex; gap:18px; align-items:flex-start;
+    background:var(--bg-raised); border:1px solid var(--line); border-radius:10px; padding:22px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .alma-card:hover{border-color:var(--blue); transform:translateY(-3px);}
+  .badge{
+    flex:none; width:52px; height:52px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Bricolage Grotesque', sans-serif; font-weight:700; font-size:1.05rem; color:#fff;
+    background:var(--blue-deep);
+    background:conic-gradient(from 200deg, var(--blue), var(--gold), var(--pink), var(--blue));
+    position:relative;
+  }
+  .badge::after{
+    content:""; position:absolute; inset:3px; border-radius:50%;
+    background:var(--navy-deep);
+  }
+  .badge span{position:relative; z-index:1;}
+  .alma-name{font-weight:700; font-size:1rem; margin-bottom:3px;}
+  .alma-loc{font-size:0.86rem; color:var(--ink-soft); margin-bottom:6px;}
+  .alma-level{font-size:0.84rem; color:var(--blue-deep); font-family:'IBM Plex Mono', monospace;}
+
+  .cert-line{font-size:0.95rem; color:var(--ink-soft); max-width:70ch;}
+  .cert-line strong{color:var(--ink); font-weight:700;}
+
+  footer{
+    background:var(--navy-deep); color:#EFF3FF; padding:64px 0 48px;
+  }
+  footer h2{font-size:1.9rem; max-width:16ch; margin-bottom:18px; color:#fff;}
+  footer .contact-row a{color:#DDE4F8;}
+  footer .foot-note{font-size:0.82rem; color:var(--silver); margin-top:28px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:2.5rem; max-width:none;}
+    .ledger-row, .tl-row{grid-template-columns:1fr; gap:6px;}
+    .alma-grid{grid-template-columns:1fr;}
+    .nav-links{gap:16px; font-size:0.82rem;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name"><a href="#top">Tavishi Kashyap</a></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#focus">Focus</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#alma">Alma Mater</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="aurora"><span></span><span></span><span></span></div>
+  <div class="grid-texture"></div>
+
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">FINAL-YEAR CSE STUDENT · TIET · CLASS OF 2027</div>
+      <h1>Building systems that <em>reason</em>, explain, and run fast.</h1>
+      <p class="hero-role">Seeking AI/ML Engineering &amp; Software Engineering internships — agentic AI, LLM orchestration, and GPU-optimized ML systems.</p>
+      <p class="hero-lede">I like the space between a working prototype and something a person can actually trust — getting a model from "it runs on my machine" to fast, explainable, and genuinely useful.</p>
+      <div class="contact-row">
+        <a href="mailto:tavishikashyap557@gmail.com">tavishikashyap557@gmail.com</a>
+        <a href="tel:+919041363202">+91 90413 63202</a>
+        <a href="https://www.linkedin.com/in/tavishi-kashyap-422530286" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+
+    <div class="readout hero-anim">
+      <div class="readout-title">// benchmark readout</div>
+      <div class="stat-row flag">
+        <span class="stat-num">90.4%</span>
+        <span class="stat-label">pneumonia-detection accuracy, GPU-optimized diagnostic pipeline</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">5.9×</span>
+        <span class="stat-label">faster inference via FP16/INT8 quantization</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">patient records structured into a clinical decision-support pipeline</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">33×</span>
+        <span class="stat-label">faster data preprocessing, GPU-parallelized pipeline (NVIDIA DALI)</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2>About</h2></div>
+    <div class="about-body reveal">
+      <p>I'm a final-year Computer Engineering student at Thapar Institute of Engineering &amp; Technology, and I care most about the layer of AI work that doesn't get talked about enough: making a model's output <strong>fast enough and explainable enough</strong> that someone downstream can actually rely on it.</p>
+      <p>That's shown up in a few different forms — squeezing latency out of a diagnostic imaging pipeline with CUDA and ONNX Runtime, building the reasoning layer for an agentic AI assistant with structured prompt engineering, and layering SHAP-based explainability onto a clinical risk-prediction model so its predictions come with a reason attached.</p>
+      <p>I'm drawn to teams working where AI systems meet real-world reliability — healthcare, developer tooling, performance engineering. Currently looking for an internship where I can keep building in that space.</p>
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2>Focus areas</h2></div>
+    <div class="ledger reveal">
+      <div class="ledger-row">
+        <div class="ledger-cat">AI/ML &amp; Generative AI</div>
+        <div class="ledger-items">Prompt Engineering, LLM Reasoning &amp; Orchestration (Gemini API), Generative AI, Explainable AI (SHAP), Scikit-learn, PyTorch</div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-cat">Performance &amp; Systems</div>
+        <div class="ledger-items">CUDA, ONNX Runtime, NVIDIA DALI, GPU Optimization &amp; Quantization, Model Benchmarking</div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-cat">Data Engineering</div>
+        <div class="ledger-items">NumPy, Pandas, OpenCV, SQL, Feature Engineering, Exploratory Data Analysis</div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-cat">Systems &amp; Tools</div>
+        <div class="ledger-items">Docker, Git/GitHub, Python, C++</div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-cat">Core CS Fundamentals</div>
+        <div class="ledger-items">Data Structures &amp; Algorithms, Object-Oriented Programming, Operating Systems, DBMS, Computer Networks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2>Projects</h2></div>
+
+    <div class="project reveal">
+      <div class="project-top"><h3>CogniTwin — Agentic AI-Powered Digital Twin</h3></div>
+      <div class="project-team">Capstone project · 5-member team</div>
+      <div class="project-tools">Python · Gemini API · Prompt Engineering · LLM Reasoning</div>
+      <ul>
+        <li>Engineered the LLM-based reasoning and prompt orchestration layer using Google Gemini, enabling multi-step workflow automation across Transport, Food, and Shopping domains.</li>
+        <li>Designed and iteratively refined structured prompt templates to improve reliable intent extraction, feeding the agent framework's task-decomposition logic.</li>
+        <li>Researched and presented the Generative Agents (ACM UIST 2023) memory-reflection-planning framework as part of the team's design foundation for the system's persistent-memory approach.</li>
+      </ul>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-top"><h3>Accelerated Medical Image Diagnostic Pipeline</h3></div>
+      <div class="project-tools">Python · PyTorch · CUDA · ONNX Runtime · NVIDIA DALI · OpenCV</div>
+      <ul>
+        <li>Trained a ResNet-18 model on chest X-rays for pneumonia detection, achieving 90.4% test accuracy.</li>
+        <li>Cut inference latency 5.9× via FP16 mixed-precision inference, and compressed model size ~4× via INT8 post-training quantization using ONNX Runtime.</li>
+        <li>Rebuilt the data pipeline with NVIDIA DALI, delivering 33× faster preprocessing than CPU-based loading.</li>
+      </ul>
+      <div class="project-chips">
+        <span class="chip">90.4% accuracy</span>
+        <span class="chip">5.9× latency</span>
+        <span class="chip">33× preprocessing</span>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-top"><h3>MatriCare — High-Risk Pregnancy Detection System</h3></div>
+      <div class="project-tools">Python · Scikit-learn · SHAP · Pandas · NumPy</div>
+      <ul>
+        <li>Built the core ML risk-prediction model for a clinical decision-support tool, handling data preprocessing, feature engineering, and model training on maternal health parameters.</li>
+        <li>Engineered a SHAP-based explainability layer delivering feature-level, clinically interpretable predictions.</li>
+      </ul>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-top"><h3>Whack-a-Face — Embedded Vision Interactive Game</h3></div>
+      <div class="project-tools">Python · OpenCV · Haar Cascade · Pygame · Computer Vision</div>
+      <ul>
+        <li>Developed a real-time, webcam-based interactive game using face detection, inspired by classic Whack-a-Mole mechanics.</li>
+        <li>Implemented real-time face detection and tracking using OpenCV and Haar Cascade classifiers to drive gameplay.</li>
+        <li>Built live hit detection, score tracking, and dynamic difficulty scaling for engaging, responsive gameplay.</li>
+        <li>Optimized webcam processing and face-to-screen mapping for smooth, low-latency performance.</li>
+      </ul>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-top"><h3>AI Playground Arena — Interactive Vision &amp; Generative AI Platform</h3></div>
+      <div class="project-tools">Python · PyTorch · YOLOv8n · Flask · PIL · NumPy · HTML/CSS/JavaScript</div>
+      <ul>
+        <li>Built an interactive platform unifying real-time object detection, segmentation, and generative AI in a single interface.</li>
+        <li>Implemented YOLOv8-based object detection alongside diffusion-based image generation with live visual outputs.</li>
+        <li>Designed a Flask-powered web interface for experimenting with AI models, image synthesis, and parameter tuning.</li>
+      </ul>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-top"><h3>Library Management System — Resource Automation</h3></div>
+      <div class="project-tools">Oracle SQL · PL/SQL · ER Modeling · Triggers · Cursors · Stored Procedures</div>
+      <ul>
+        <li>Designed and implemented a comprehensive library management system streamlining book issuance, returns, registration, and fine computation.</li>
+        <li>Developed a normalized relational database with ER modeling to manage complex relationships among books, authors, publishers, and borrowers.</li>
+        <li>Built PL/SQL procedures, functions, triggers, and cursors for real-time validation, data integrity, and overdue tracking.</li>
+        <li>Delivered a secure, multi-branch accessible system with efficient resource allocation and administrative control.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2>Experience</h2></div>
+    <div class="tl reveal">
+      <div class="tl-row">
+        <div class="tl-date">Jun 2025 —<br>Dec 2026</div>
+        <div>
+          <div class="tl-role">AI/ML Research Intern</div>
+          <div class="tl-org">Center of Excellence Data Science and AI, TIET · The University of Queensland, Australia</div>
+          <ul>
+            <li>Processed and structured 500+ patient records into 10+ clinically significant indicators, building reusable preprocessing pipelines for a clinical decision-support system.</li>
+            <li>Conducted systematic model evaluation across multiple ML architectures (Decision Tree, Random Forest, XGBoost, Gradient Boosting), selecting ensemble methods that outperformed baseline classifiers on held-out data.</li>
+            <li>Applied SHAP-based explainable AI to generate feature-level justifications for every model prediction.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2>Leadership &amp; Activities</h2></div>
+    <div class="tl reveal">
+      <div class="tl-row">
+        <div class="tl-date">Jul 2024 —<br>Dec 2024</div>
+        <div>
+          <div class="tl-role">Under-Secretary-General, Thapar MUN Society</div>
+          <div class="tl-org">TIET</div>
+          <ul>
+            <li>Served in a core organizing leadership role for the society's Model United Nations conferences.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">Sep 2023 —<br>Sep 2024</div>
+        <div>
+          <div class="tl-role">Creativity Head, Student Alumni Interaction Cell (SAIC)</div>
+          <div class="tl-org">TIET</div>
+          <ul>
+            <li>Led creative planning and execution for two flagship institute events — Exordium 2023 and the Global Leadership Summit '24 — coordinating 100+ student volunteers; reappointed for the second event based on performance in the first.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">Feb 2024</div>
+        <div>
+          <div class="tl-role">Student Volunteer</div>
+          <div class="tl-org">SERB-DST Sponsored Workshop on Convergence of Explainable AI and IoT in Smart Solutions, TIET</div>
+          <ul>
+            <li>Selected to coordinate on-ground logistics for a national research workshop on Explainable AI and IoT in smart solutions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="alma">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2>Alma Mater</h2></div>
+    <div class="alma-grid reveal">
+      <div class="alma-card">
+        <div class="badge"><span>TI</span></div>
+        <div>
+          <div class="alma-name">Thapar Institute of Engineering &amp; Technology</div>
+          <div class="alma-loc">Patiala, Punjab</div>
+          <div class="alma-level">B.E. Computer Engineering &nbsp;·&nbsp; 2023 – 2027</div>
+        </div>
+      </div>
+      <div class="alma-card">
+        <div class="badge"><span>SS</span></div>
+        <div>
+          <div class="alma-name">Sanskriti School</div>
+          <div class="alma-loc">Chanakyapuri, New Delhi</div>
+          <div class="alma-level">Senior Secondary &nbsp;·&nbsp; 2021 – 2023</div>
+        </div>
+      </div>
+      <div class="alma-card">
+        <div class="badge"><span>BV</span></div>
+        <div>
+          <div class="alma-name">Bhavan Vidyalaya</div>
+          <div class="alma-loc">Chandigarh</div>
+          <div class="alma-level">Grades 9 – 10 &nbsp;·&nbsp; 2019 – 2021</div>
+        </div>
+      </div>
+      <div class="alma-card">
+        <div class="badge"><span>SS</span></div>
+        <div>
+          <div class="alma-name">Sanskriti School</div>
+          <div class="alma-loc">Chanakyapuri, New Delhi</div>
+          <div class="alma-level">Foundational Schooling &nbsp;·&nbsp; Nursery – Grade 8</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">07</span><h2>Certifications</h2></div>
+    <p class="cert-line reveal"><strong>NVIDIA Deep Learning Institute</strong> — Getting Started with AI on Jetson Nano, Fundamentals of Accelerated Computing with CUDA C++, Getting Started with Deep Learning, Generative AI with Diffusion Models</p>
+    <p class="cert-line reveal"><strong>Mastercard</strong> — Cybersecurity Job Simulation</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's talk about what you're building.</h2>
+    <div class="contact-row">
+      <a href="mailto:tavishikashyap557@gmail.com">tavishikashyap557@gmail.com</a>
+      <a href="tel:+919041363202">+91 90413 63202</a>
+      <a href="https://www.linkedin.com/in/tavishi-kashyap-422530286" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <p class="foot-note">Tavishi Kashyap — Patiala, Punjab, India</p>
+  </div>
+</footer>
+
+<script>
+  // Content is visible by default via CSS regardless of this script.
+  // This only adds a one-time entrance animation, and only when it can
+  // confirm it will actually run (real IntersectionObserver support).
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var items = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          e.target.classList.add('animate-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.12});
+    items.forEach(function(el){ io.observe(el); });
+  }
+</script>
+
+</body>
+</html>
