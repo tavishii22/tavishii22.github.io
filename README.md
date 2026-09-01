@@ -1,4 +1,3 @@
-# tavishii22.github.io
 # Tavishi Kashyap | Portfolio
 
 Personal portfolio site — AI/ML engineering, explainable AI, and GPU-optimized deep learning work.
