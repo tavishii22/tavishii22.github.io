@@ -22,7 +22,6 @@ Final-year Computer Engineering student at Thapar Institute of Engineering & Tec
 
 ## Tech Stack
 
-- Plain **HTML5 / CSS3 / vanilla JavaScript** — no framework, no build step
 - Fonts: [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque), [Manrope](https://fonts.google.com/specimen/Manrope), [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) via Google Fonts
 - CSS custom properties for theming (navy / gold / pink accent palette)
 - Scroll-triggered reveal animations via `IntersectionObserver`
